@@ -1,0 +1,22 @@
+outfile: (not really BNF-Format, due to its context sensitive character)
+
+ tdufile ::= "TDUv0.1---" <nums> <date> <date> <size> <name> <pointer> <entrylist>
+                                                                ^-pointer to first 
+                                                                entry (last in file)
+                                                         ^- name of starting directory (scanroot)
+                                           ^- beginning of scan
+                                     ^- end of scan 
+                                        (fixed position 10+sizeof(long int))
+                                        if zero => work in progress
+                            ^- quantity of scanned files (fixed position 10)
+ <pointer> ::= long int  <- pointer to entrys
+ <entrylist> ::= <entry> | <entry> <entrylist>
+ <entry> ::= <dsize><size><name><size><pointerlist>
+                                         ^- list of subdirs
+                             ^- name of entry
+ <nums> ::= long int
+ <date> ::= time_t
+ <name> ::= string (char array)
+ <pointerlist> ::= <> | <pointer> | <pointer> <pointerlist>
+ <size> ::= int <- quantity of entrys/pointers/etc, length of string
+ <dsize> := uintmax_t <- subdirectory size

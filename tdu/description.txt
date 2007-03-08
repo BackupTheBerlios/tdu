@@ -1,0 +1,6 @@
+Web based disk usage analyse tool.
+
+It is divided into two parts, the scanner and the viewer.
+The scanner is a derived work from gnu du (coreutils) and builds a database file with it's output.
+The viewer is a php script and can be view it with any AJAX-able browser.
+

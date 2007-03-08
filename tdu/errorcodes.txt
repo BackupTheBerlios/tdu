@@ -1,0 +1,10 @@
+1  - file open error, does it exist?
+2  - wrong filetype, no tdu file
+3  - work in progress
+4  - Error seeking file
+5  - no parameter dir
+6  - no parameter line
+7  - no Parameter fileno
+8  - directory does not exist or has no subdirs
+9  - file number (fileno) does not exist in config file ($tdu-file[fileno])
+10 - no files for display / no $tdu-file[i]-file exists

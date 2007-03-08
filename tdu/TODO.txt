@@ -1,0 +1,4 @@
+siehe im Quellcode und zusätzlich allgemein:
+
+$lang vom Benutzer wählen lassen und dann anderen Bereichen (z.B. tdu-getdir.php übergeben)
+tdu_* -> tdu-*

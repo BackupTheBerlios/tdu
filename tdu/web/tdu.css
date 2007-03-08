@@ -1,0 +1,26 @@
+/*
+ * tdu.css
+ */
+
+.linked { cursor:pointer; float:left;}
+.floated { float:left; }
+body { font-size:14px; font-family:Arial, Helvetica;}
+
+/* table,tr,td { border-spacing:0; margin:0; padding:0; border-collapse:collapse; border:1px solid yellow; vertical-align:middle;}
+img { margin:0; padding:0; border:1px solid red; vertical-align:middle;}
+div { margin:0; padding:0; border:1px solid blue; vertical-align:middle;}
+span { margin:0; padding:0; border:1px solid blue; vertical-align:middle;}*/
+table.head { width:100%; margin: 4px; border-collapse:collapse; border:0; }
+table { margin:5px; border-collapse:collapse; border:1px solid blue; }
+td.top { padding-bottom:10px; }
+td.topleft { width:130px; }
+td.left { width:130px; vertical-align:top }
+td { padding-top:0; padding-bottom:0; margin:0; border:0; }
+td.size { border-left:1px solid blue; text-align:right }
+td.inhalt { padding:5px; margin:0; border:1px solid blue;}
+th { border:1px solid blue; padding-top:0; padding-bottom:0; margin:0; background-color:#AAAAFF;}
+img { vertical-align:middle;}
+a { color:blue  }
+.small { font-size:0.7em; color:#808080}
+.infos { font-size:0.9em; color:#5050B0}
+
