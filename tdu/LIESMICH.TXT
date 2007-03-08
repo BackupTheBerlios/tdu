@@ -1,0 +1,19 @@
+Das Projekt befindet sich noch in den absoluten Anfängen, ist aber schon funktionsfähig.
+Diese Liesmich-Datei habe ich mal grade schnell in 5 Minuten verfasst. Eine genauere Erklärung wird in Kürze folgen.
+
+
+Installation:
+ 
+Falls nicht das vorkompilierte buildufile genommen wird, kann einfach mit make eines kompiliert werden. (Makefile ist vorhanden)
+
+Dann eine Datenbankdatei mit "buildufile [pfad] [dbdatei]" erstellen
+[pfad] - der Pfad zum gescannten Verzeichnis
+[dbdatei] - die Datenbankdatei
+
+Dann die Dateien im Unterverzeichnis "web" auf einen Webserver kopieren.
+Die Datenbankdatei muss sich an einem Ort befinden, der von den PHP-Skripten gelesen werden kann.
+Auf dem Webserver die Datei tdu-config.php.inc bearbeiten, dort die Datenbankdatei eintragen.
+
+Fertig - nun die Adresse auf dem Webserver aufrufen.
+
+Die Datenbankdatei kann auch mit einem cron-Job erstellt werden. Es können mehrere Datenbankdateien in das Array in der config-Datei eingetragen werden.
