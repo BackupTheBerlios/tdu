@@ -32,7 +32,9 @@
 #include "hash.h"
 #include <string.h>    // strlen
 #include <inttypes.h>  // PRId64
-#include <signal.h> // alarm/sigaction
+#include <signal.h> // sigaction
+#include <unistd.h>    // alarm
+#include <time.h>      // time
 
 #define UINTMAX_SIZE (sizeof(uintmax_t))
 #define INITIAL_TABLE_SIZE 103
@@ -172,25 +174,25 @@ hash_init (void)
 }
 
 static bool printit = true; //if true, printout status
-static int test = 0;
 static char *scanroot;
 static long int nums = 0; // number of entrys scanned / in file
 static long int pointerpos = 0; // position of pointer to first entry in file
 static long int endtimepos = 0; // position of end time
 static long int numspos = 0; // position of directory quantity
 static uintmax_t total = 0;
-static unsigned char prefixes[8] = " kMGTPE?";
+static char prefixes[8] = " kMGTPE?";
 //static uintmax_t bytepos = 10;
 
 static FILE *outfile = NULL;
 
 static void check_sig (int signr) {
+  (void) signr;
   if (printit) fprintf(stderr, "ERROR: SIGALRM while printit is still true\n");
   printit = true;
 }
 
 static void
-set_currnums()
+set_currnums(void)
 {
   long int old_pos;
  
@@ -201,7 +203,7 @@ set_currnums()
 }
 
 static void
-set_startpointer()
+set_startpointer(void)
 {
   long int old_pos;
 
@@ -255,13 +257,13 @@ set_subdir(struct dulevel *dulvl,size_t level,size_t sub_level)
 }
 
 static bool
-process_file (FTS *fts, FTSENT *ent)
+process_file (FTSENT *ent)
 {
   //struct duinfo dui;
   uintmax_t size; //dui
   uintmax_t size_to_print; //dui_to_print
   uintmax_t hsize; //berechnung der h-readable ausgabe von size_to_print
-  unsigned char tempstr[30];  //for storing temporary strings <=20 bytes
+  char tempstr[30];  //for storing temporary strings <=20 bytes
   static struct dulevel *dulvl;
   static size_t n_alloc = 0;
   static size_t prev_level = 0;
@@ -475,11 +477,10 @@ process_file (FTS *fts, FTSENT *ent)
   return true;
 }
 
-
+int
 main (int argc, char *argv[])
 {
   int fehler=0;
-  char *dir;
   char* files[2];
   int written;
   time_t jetzt = 0;
@@ -518,7 +519,7 @@ main (int argc, char *argv[])
   fwrite (&nums,(size_t) sizeof nums,1,outfile);
   endtimepos = ftell(outfile);
   fwrite (&jetzt,(size_t) sizeof jetzt,1,outfile); // zero
-  jetzt = time ();
+  jetzt = time (NULL);
   fwrite (&jetzt,(size_t) sizeof jetzt,1,outfile); // now
 
   //write length of name and name of starting dir
@@ -561,12 +562,12 @@ main (int argc, char *argv[])
 	break;
       }
     //fprintf(stderr, "Eine Schleife: %s \n", ent->fts_path); //debug
-    process_file(fts,ent);
+    process_file(ent);
   }
 //  fclose (outfile);
   fts_close (fts);
 //  outfile = fopen (argv[2], "w");
-  jetzt = time ();
+  jetzt = time (NULL);
   fseek(outfile,endtimepos,SEEK_SET);
   fwrite (&jetzt,(size_t) sizeof jetzt,1,outfile); // now
   //TODO: why does this fclose SIGSEG segfault?
