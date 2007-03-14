@@ -1,19 +1,19 @@
 Das Projekt befindet sich noch in den absoluten Anfängen, ist aber schon funktionsfähig.
-Diese Liesmich-Datei habe ich mal grade schnell in 5 Minuten verfasst. Eine genauere Erklärung wird in Kürze folgen.
-
 
 Installation:
  
 Falls nicht das vorkompilierte buildufile genommen wird, kann einfach mit make eines kompiliert werden. (Makefile ist vorhanden)
+Ich habe nur Linux, daher weiss ich nicht, ob es auch mit anderen Systemen funktioniert. Es könnte Probleme geben und auf Solaris+AIX andere Ergebnisse als du/coreutils liefern, da ich ein paar Dinge weggelassen habe, die ich nicht verstanden habe.
 
-Dann eine Datenbankdatei mit "buildufile [pfad] [dbdatei]" erstellen
+Eine Datenbankdatei mit "buildufile [pfad] [dbdatei]" erstellen
 [pfad] - der Pfad zum gescannten Verzeichnis
 [dbdatei] - die Datenbankdatei
 
-Dann die Dateien im Unterverzeichnis "web" auf einen Webserver kopieren.
+Die Dateien im Unterverzeichnis "web" auf einen Webserver kopieren.
 Die Datenbankdatei muss sich an einem Ort befinden, der von den PHP-Skripten gelesen werden kann.
-Auf dem Webserver die Datei tdu-config.php.inc bearbeiten, dort die Datenbankdatei eintragen.
+Auf dem Webserver die Datei tdu-config.php.inc bearbeiten, dort die Datenbankdatei eintragen. Die passende Stelle ist in tdu-config.php.inc beschrieben.
 
 Fertig - nun die Adresse auf dem Webserver aufrufen.
 
-Die Datenbankdatei kann auch mit einem cron-Job erstellt werden. Es können mehrere Datenbankdateien in das Array in der config-Datei eingetragen werden.
+Die Datenbankdatei kann auch mit einem cron-Job erstellt werden. Es können mehrere Datenbankdateien in das Array in der config-Datei eingetragen werden. So kann der Speicherplatzverbrauch mehrerer Server auf einer Webseite analysiert werden.
+
