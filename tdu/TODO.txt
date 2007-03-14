@@ -1,4 +1,14 @@
 siehe im Quellcode und zusätzlich allgemein:
 
-$lang vom Benutzer wählen lassen und dann anderen Bereichen (z.B. tdu-getdir.php übergeben)
+$lang vom Benutzer wählen lassen und dann anderen Bereichen (z.B.
+tdu-getdir.php übergeben) (besser irgendwann über SQL)
+
 tdu_* -> tdu-*
+
+Auf SQL umsteigen -> scanner legt daten auf einen sql-server, viewer kann sie
+sich da holen.
+über sql ließe sich auch die config da halten und über die weboberfläche
+ändern.
+so wären auch features möglich wie "einzelnen verzeichnissen maximalgrößen
+geben und bei überschreitung einer größe, sich warnen lassen.
+
